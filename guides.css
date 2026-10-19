@@ -18,6 +18,11 @@
 .compare-table th, .compare-table td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
 .compare-table thead th { background: var(--bg-soft); }
 .compare-table tbody th { font-weight: 600; background: var(--bg-soft); }
+/* Comparatif (3 colonnes), sur mobile : toutes les colonnes visibles sans défilement (les mots longs peuvent se couper). */
+@media (max-width: 640px) {
+  .versus { font-size: 0.85rem; }
+  .versus th, .versus td { padding: 6px; overflow-wrap: anywhere; hyphens: auto; }
+}
 
 .faq dt { font-weight: 700; margin-top: 18px; }
 .faq dd { margin: 4px 0 0; }
