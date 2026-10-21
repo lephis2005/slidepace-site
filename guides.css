@@ -40,3 +40,6 @@
 .lang-list ul { display: flex; flex-wrap: wrap; gap: 4px 12px; list-style: none; padding: 0; margin: 0; }
 .lang-list [aria-current] { font-weight: 700; }
 .lang-inline { color: var(--muted); font-size: 0.95rem; }
+
+/* Texte lu par les lecteurs d'écran seulement (accessibilité, 2026-10-21). */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }

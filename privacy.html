@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://cdn.paddle.com; connect-src 'self' https://cloudflareinsights.com https://api.slidepace.com https://*.paddle.com; frame-src https://*.paddle.com; img-src 'self' data: https://*.paddle.com; style-src 'self' 'unsafe-inline' https://*.paddle.com; font-src 'self' https://*.paddle.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy — SlidePace</title>
-<meta name="description" content="The SlidePace extension collects no personal data. This site sets no cookies and uses cookie-free audience measurement, which you can turn off.">
+<meta name="description" content="Free extension: no data collected. SlidePace Pro: only your license ID is checked. This site sets no cookies and measures its audience without cookies; payment takes place with Paddle.">
 <link rel="canonical" href="https://slidepace.com/privacy.html">
 <link rel="alternate" hreflang="en" href="https://slidepace.com/privacy.html">
 <link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/privacy.html">
@@ -26,18 +27,35 @@
 <main id="content">
   <div class="wrap">
 <h1>Privacy policy</h1>
-<p class="updated">Last updated: 20 October 2026</p>
-<p class="lead">In short: the SlidePace extension collects no data at all, and this website sets no cookies; it measures its audience without cookies, and you can <a href="#audience">object to it</a>.</p>
+<p class="updated">Last updated: 21 October 2026</p>
+<p class="lead">In short: the free version collects no data and sends nothing. SlidePace Pro still needs no account: about once a month, the extension checks only your license ID — never your name, your email or the content of your presentations. Payment is handled entirely by Paddle, our official reseller: we never see your bank details. This website sets no cookies itself; it measures its audience without cookies, and you can <a href="#audience">object to it</a>.</p>
 
 <h2>The SlidePace extension</h2>
 <ul>
-  <li><strong>No data collected.</strong> The extension sends nothing to any server: no analytics, no telemetry, no account.</li>
-  <li><strong>Local storage only.</strong> Your settings (duration, mode, warning time, size, position) are saved in your own browser with Chrome’s local storage and never leave your computer.</li>
-  <li><strong>Minimal permissions.</strong> The extension only asks for the <code>storage</code> permission (to save your settings), the <code>scripting</code> permission and access to <code>https://docs.google.com/presentation/*</code> (to display the timer on Google Slides, including in a tab that is already open when the extension is installed or updated). It does not read the content of your presentations, your browsing history or your email address.</li>
+  <li><strong>Free version: no data collected.</strong> The extension sends nothing to any server: no analytics, no telemetry, no account.</li>
+  <li><strong>Pro trial: nothing sent.</strong> The 30-day Pro trial starts with one click and is recorded only in your browser; nothing is sent during the trial.</li>
+  <li><strong>Local storage only.</strong> Your settings (duration, mode, warnings, sequences, size, position) and, for Pro customers, your license are saved in your own browser with its local storage.</li>
+  <li><strong>Minimal permissions.</strong> The extension asks for the <code>storage</code> permission (to save your settings), the <code>scripting</code> permission and access to <code>https://docs.google.com/presentation/*</code> (to display the timer on Google Slides, including in a tab that is already open when the extension is installed or updated). For Pro customers only, an additional permission — requested when you activate Pro, and which you can decline — allows the monthly license check. The extension does not read the content of your presentations, your browsing history or your email address.</li>
+  <li><strong>Extension stores.</strong> The Chrome Web Store (Google) processes data related to installing the extension as an independent data controller, under its own policies.</li>
+</ul>
+
+<h2>License check (Pro customers)</h2>
+<ul>
+  <li><strong>Data processed:</strong> your license ID (the order or subscription ID assigned by Paddle). It contains neither your name nor your email, but it is linked to your purchase at Paddle: it is <strong>pseudonymised data</strong> under the GDPR.</li>
+  <li><strong>When:</strong> at activation, then about once a month; a check that gets no answer is tried again later, and you can start one yourself (“Verify now”). Free users are never concerned.</li>
+  <li><strong>How:</strong> the ID is sent to our verification function, hosted by Cloudflare, Inc. It asks Paddle whether the license is valid (payment received, subscription active) and returns a signed answer. If the service does not respond, your license stays active for at least 30 days.</li>
+  <li><strong>If you decline the permission:</strong> Pro keeps working for at least 30 days, then pauses with a message explaining why; the “Allow” button stays available at any time.</li>
+  <li><strong>One-click activation:</strong> after purchase, the slidepace.com license page passes your license directly to the extension. The extension only accepts these messages from <code>https://slidepace.com</code>. On that page, the transaction number from your Paddle receipt is sent to our verification function to obtain your license, then removed from the page address. This number is part of the address you arrive with: like any requested address, it reaches the website host (GitHub Pages), which may record it in its security logs (see “This website”).</li>
+  <li><strong>Purpose:</strong> confirming that your Pro license is valid, and nothing else (no advertising, no profiling).</li>
+  <li><strong>Legal basis:</strong> performance of the license contract you entered into (Article 6(1)(b) GDPR).</li>
+  <li><strong>Retention:</strong> none. The ID is processed in memory for the duration of the request and then discarded: no database, logs disabled. Like any host, Cloudflare technically receives your IP address to route the request; we do not record it.</li>
+  <li><strong>Abuse protection:</strong> to prevent a bot from overloading our verification function, Cloudflare counts the requests received per IP address (at most 60 per minute). This counter is kept by Cloudflare for the counting window; we do not record it and have no access to it. Legal basis: our legitimate interest in securing the service (Article 6(1)(f) GDPR).</li>
+  <li><strong>Processor and transfers:</strong> Cloudflare, Inc. (United States) acts as our processor (see “Transfers outside the European Union”). See <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare’s privacy policy</a>.</li>
 </ul>
 
 <h2>This website</h2>
-<p>slidepace.com uses no cookies and no advertising. The only resource it loads from another website is Cloudflare’s audience measurement script (see below). It is hosted by GitHub Pages (GitHub, Inc.), which, like any web host, may process technical data such as your IP address to deliver the pages and ensure security. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a>.</p>
+<p>slidepace.com sets no cookies and shows no advertising; it measures its audience without cookies (see “Audience measurement” below). It is hosted by GitHub Pages (GitHub, Inc.), which, like any web host, may process technical data such as your IP address, your browser and the address of the pages requested to deliver the pages and ensure security (legitimate interest; retention set by GitHub). See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a>.</p>
+<p>The pricing page loads Paddle’s checkout script from <code>cdn.paddle.com</code> only when you choose a plan; payment then takes place in a Paddle window that uses its own cookies, strictly necessary for the payment and fraud prevention. The license page contacts only our verification function (see above).</p>
 
 <h3 id="audience">Audience measurement</h3>
 <p>We measure the site’s audience with <strong>Cloudflare Web Analytics</strong>, a service of Cloudflare, Inc., which acts on our behalf as a processor under its data processing addendum (DPA). The script is loaded from <code>static.cloudflareinsights.com</code>.</p>
@@ -55,19 +73,44 @@
 </div>
 
 <h2>When you buy SlidePace Pro</h2>
-<p>Purchases are handled by our reseller <strong>Paddle.com Market Ltd</strong>, which acts as Merchant of Record. Paddle collects and processes the data needed for the payment (name, email address, country, payment details) as an independent data controller. See <a href="https://www.paddle.com/legal/privacy" rel="noopener">Paddle’s privacy policy</a>. We never see your card details. Paddle shares with us only what we need to deliver and support your licence (for example your email address and order number); we use it only for that purpose and for legal accounting obligations.</p>
+<p>Purchases are handled by our reseller acting as Merchant of Record: <strong>Paddle.com Market Ltd</strong> (United Kingdom), or the Paddle entity competent for your country: <strong>Paddle.com Inc.</strong> in the United States, <strong>Paddle.com (Canada) Ltd</strong> in Canada. Paddle collects and processes the data needed for the payment (name, email address, country, payment details) as an independent data controller. See <a href="https://www.paddle.com/legal/privacy" rel="noopener">Paddle’s privacy policy</a>. We never see your card details.</p>
+
+<h2>Data we receive from Paddle and when you write to us</h2>
+<ul>
+  <li><strong>Data:</strong> from our Paddle seller account, your email address, your country, the order or subscription number, the plan chosen and the amounts; if you write to us, your email address and the content of our exchanges.</li>
+  <li><strong>Purposes:</strong> delivering and supporting your license (finding a key, handling a refund or a cancellation), informing you of changes to our terms that apply to your subscription (section 11 of our <a href="terms.html">terms of sale</a>), answering your requests and keeping our accounts.</li>
+  <li><strong>Legal bases:</strong> performance of the contract (Article 6(1)(b) GDPR), including for informing you of changes to the terms; our legal accounting obligations (Article 6(1)(c)); our legitimate interest in answering your requests (Article 6(1)(f)).</li>
+  <li><strong>Retention:</strong> accounting records: 10 years (article L123-22 of the French Commercial Code); support exchanges: 3 years after the last contact.</li>
+  <li><strong>Recipients:</strong> these data are accessible only to PPCC Studio; they are never sold or used for advertising. Our emails pass through our email providers (see “Service providers”).</li>
+</ul>
+
+<h2>Service providers</h2>
+<ul>
+  <li><strong>Paddle.com Market Ltd</strong> (United Kingdom), <strong>Paddle.com Inc.</strong> (United States) and <strong>Paddle.com (Canada) Ltd</strong> (Canada) depending on your country: payment, invoicing, taxes — independent data controllers.</li>
+  <li><strong>Cloudflare, Inc.</strong> (United States): hosting of the license verification function and audience measurement of this site — processor.</li>
+  <li><strong>GitHub, Inc.</strong> (United States): hosting of this website.</li>
+  <li><strong>OVHcloud</strong> (France) and <strong>Google</strong>: receiving and forwarding emails sent to contact@slidepace.com.</li>
+</ul>
+
+<h2>Transfers outside the European Union</h2>
+<ul>
+  <li><strong>United Kingdom (Paddle.com Market Ltd):</strong> the United Kingdom benefits from a European Commission adequacy decision, renewed in December 2025; transfers require no other safeguard.</li>
+  <li><strong>United States (Cloudflare, Inc., GitHub, Inc. and Google LLC, for the contact@slidepace.com inbox):</strong> transfers rely on the EU–US Data Privacy Framework. This framework is the subject of an appeal still pending before the Court of Justice of the European Union; should it be invalidated, transfers would rely on the European Commission’s standard contractual clauses, provided for in these providers’ contracts.</li>
+  <li><strong>United States and Canada (Paddle.com Inc., Paddle.com (Canada) Ltd):</strong> for buyers in these countries, Paddle processes the data as an independent controller, under its own policy.</li>
+</ul>
 
 <h2>Your rights (GDPR)</h2>
-<p>You have the right to access, correct, delete and port your data, to object to or restrict its processing, and to lodge a complaint with your data protection authority (in France: the <a href="https://www.cnil.fr/" rel="noopener">CNIL</a>). For any request, write to <a href="mailto:contact@slidepace.com">contact@slidepace.com</a>. For payment data, you can also contact Paddle directly.</p>
+<p>You have the right to access, correct, delete and port your data, to object to or restrict its processing, to set instructions about what happens to your data after your death (article 85 of the French Data Protection Act), and to lodge a complaint with your data protection authority (in France: the <a href="https://www.cnil.fr/" rel="noopener">CNIL</a>). For any request, write to <a href="mailto:contact@slidepace.com">contact@slidepace.com</a>. For payment data, you can also contact Paddle directly.</p>
 
 <h2>Data controller</h2>
-<p>EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING (PPCC Studio). Contact: <a href="mailto:contact@slidepace.com">contact@slidepace.com</a>.</p>
+<p>EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING (PPCC Studio). Contact: <a href="mailto:contact@slidepace.com">contact@slidepace.com</a>. Full legal details are in our <a href="legal.html">legal notice</a>.</p>
   </div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
     <ul class="footer-links">
       <li><a href="add-timer-google-slides.html">Guides</a></li><!-- seo:guides -->
+      <li><a href="https://paddle.net/" rel="noopener"><strong>Cancel your contract</strong></a></li><!-- seo:cancel -->
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="terms.html">Terms of sale</a></li>
       <li><a href="privacy.html">Privacy</a></li>
@@ -75,7 +118,7 @@
       <li><a href="legal.html">Legal notice</a></li>
       <li>Contact: <a href="mailto:contact@slidepace.com">contact@slidepace.com</a></li>
     </ul>
-    <p>SlidePace is published by PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). This site uses no cookies. Cookie-free audience measurement (Cloudflare Web Analytics): <a href="/privacy.html#audience">stop measuring my visits</a>.</p>
+    <p>SlidePace is published by PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). This site does not set any cookies itself; it measures its audience without cookies (Cloudflare Web Analytics): <a href="/privacy.html#audience">stop measuring my visits</a>. The pricing page loads Paddle’s payment script from cdn.paddle.com only when you choose a plan; payment takes place in a Paddle window, which uses its own cookies, strictly necessary for payment and fraud prevention (<a href="https://www.paddle.com/legal/privacy" rel="noopener">Paddle’s privacy policy</a>).</p>
     <p>© 2026 SlidePace. Google Slides™ is a trademark of Google LLC. SlidePace is not affiliated with Google.</p>
   </div>
 </footer>
