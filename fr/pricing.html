@@ -2,9 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://cdn.paddle.com; connect-src 'self' https://cloudflareinsights.com https://api.slidepace.com https://*.paddle.com; frame-src https://*.paddle.com; img-src 'self' data: https://*.paddle.com; style-src 'self' 'unsafe-inline' https://*.paddle.com; font-src 'self' https://*.paddle.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarifs — SlidePace</title>
-<meta name="description" content="SlidePace est gratuit : un minuteur par-dessus vos présentations Google Slides, sans compte.">
+<meta name="description" content="SlidePace est gratuit. SlidePace Pro : 12 € par an ou 39 € en paiement unique, TVA incluse dans l’UE.">
 <link rel="canonical" href="https://slidepace.com/fr/pricing.html">
 <link rel="alternate" hreflang="en" href="https://slidepace.com/pricing.html">
 <link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/pricing.html">
@@ -26,37 +27,76 @@
 <main id="content">
   <div class="wrap">
 <h1>Tarifs</h1>
-<p class="lead">SlidePace est gratuit : la version gratuite est complète et s’utilise sans compte.</p>
+<p class="lead">La version gratuite est complète et utile à elle seule. SlidePace Pro ajoute des fonctions avancées pour les formateurs et conférenciers.</p>
 <div class="plans">
   <section class="card plan">
     <h2>Gratuit</h2>
+    <p class="price">0 €</p>
     <ul>
       <li>Compte à rebours ou chronomètre par-dessus Google Slides</li>
       <li>1 seuil d’alerte en couleur avant la fin</li>
       <li>Raccourcis clavier et boutons à l’écran</li>
-      <li>Réglages : durée, mode, seuil, taille, position</li>
+      <li>Réglages : durée, mode, seuil, taille, position</li>
     </ul>
     <a class="btn" href="https://chromewebstore.google.com/detail/dchbmbjjgcdjkhkkmebpnbhgegchobca?utm_source=site&amp;utm_medium=pricing&amp;utm_campaign=fr" rel="noopener">Ajouter à Chrome</a>
   </section>
+  <section class="card plan">
+    <h2>Pro <span class="badge" data-sale="off">Bientôt disponible</span></h2>
+    <p class="price">12 € <small>par an (1 € par mois)</small></p>
+    <p class="price">39 € <small>en paiement unique</small></p>
+    <p class="muted">Prix de lancement, TVA incluse dans l’Union européenne (ailleurs, des taxes locales peuvent s’ajouter au paiement).</p>
+    <ul>
+      <li>Tout ce que contient la version gratuite</li>
+      <li>Jusqu’à 3 seuils d’alerte, avec signal sonore optionnel</li>
+      <li>Séquences d’atelier (ex. 10 min exposé, 20 min exercice, 5 min débrief), avec passage automatique ou à votre signal</li>
+      <li>Une seule licence pour tous vos ordinateurs</li>
+    </ul>
+    <p class="note">Les nouvelles fonctions Pro sont incluses sans supplément pour les clients Pro.</p>
+    <p class="note"><strong>Paiement unique, sans abonnement :</strong> accès aux fonctions Pro disponibles aujourd’hui et aux éventuelles mises à jour publiées ensuite, sans rien payer de plus.</p>
+    <p class="note"><strong>Votre tarif est garanti.</strong> Si nos prix augmentent, votre abonnement annuel reste renouvelé au tarif de votre souscription (hors évolution du taux de TVA), tant qu’il reste actif et que SlidePace Pro est proposé en abonnement annuel.</p>
+    <p class="note">Sans compte. Extension gratuite : aucune donnée collectée ; Pro : seule la licence est vérifiée.</p>
+    <span class="btn" aria-disabled="true" data-sale="off">Bientôt disponible</span>
+    <div class="hidden" data-sale="on">
+      <button type="button" class="btn" data-plan="annual">Acheter — 12 € par an</button>
+      <button type="button" class="btn btn-secondary" data-plan="lifetime">Acheter — 39 € en paiement unique</button>
+      <p id="buy-status" class="muted" role="status"></p>
+      <p class="note">Essai gratuit de 30 jours, sans carte bancaire : en un clic depuis l’extension, sans compte, rien n’est envoyé pendant l’essai. Vos réglages Pro sont conservés ensuite.</p>
+    </div>
+  </section>
 </div>
-<p class="note">Une offre payante pourra être proposée plus tard.</p>
+<h2 id="configuration">Configuration requise</h2>
+<ul>
+  <li><strong>Navigateur :</strong> Google Chrome, version récente, sur ordinateur. Les téléphones et les tablettes ne sont pas pris en charge.</li>
+  <li><strong>Google Slides :</strong> présentation ouverte dans le navigateur et lancée en mode présentation (diaporama), en plein écran ou non. PowerPoint et Keynote ne sont pas pris en charge.</li>
+  <li><strong>Où le minuteur s’affiche :</strong> sur l’écran que voit le public. Il ne s’affiche pas dans la fenêtre « Vue présentateur » (commentaires du présentateur), ni sur une présentation publiée sur le web (lien « Publier sur le web » ou présentation intégrée dans une autre page).</li>
+  <li><strong>SlidePace Pro :</strong> connexion à internet environ une fois par mois, pour vérifier la licence (autorisation facultative demandée à l’activation).</li>
+  <li><strong>Mesure de protection technique :</strong> la licence Pro est un fichier signé, vérifié par l’extension.</li>
+  <li><strong>Langues :</strong> français, anglais, espagnol, portugais (Brésil), allemand, italien, japonais.</li>
+</ul>
+<p class="note" data-sale="off">SlidePace Pro n’est pas encore en vente. Quand il le sera, les paiements seront gérés par notre revendeur Paddle.com, qui calcule les taxes applicables (comme la TVA) selon votre pays et émet votre facture. Chaque achat Pro bénéficie d’une <a href="refund.html">garantie satisfait ou remboursé de 14 jours</a>.</p>
+<p class="note hidden" data-sale="on">Les paiements sont gérés par notre revendeur Paddle.com (revendeur officiel, « Merchant of Record »), qui calcule les taxes applicables (comme la TVA) selon votre pays et émet votre facture. L’abonnement annuel se renouvelle automatiquement chaque année, au tarif de votre souscription, et peut être résilié à tout moment. En achetant, vous acceptez nos <a href="terms.html">conditions générales de vente</a>. Chaque achat Pro bénéficie d’une <a href="refund.html">garantie satisfait ou remboursé de 14 jours</a>.</p>
+<p class="hidden" data-sale="on"><a href="licence.html">Retrouver ma clé de licence</a> — avec le numéro de transaction de votre reçu Paddle.</p>
+<p class="hidden" data-sale="on"><a href="https://customer-portal.paddle.com/cpl_01m50ryzx8qggj8p5vzk1qxy49" rel="noopener"><strong>Résilier votre contrat</strong></a> — abonnement annuel : résiliation en ligne à tout moment, sur le portail client de Paddle ; si vous résiliez après un renouvellement, vous pouvez demander une résiliation immédiate et le remboursement de la période restante au prorata.</p>
   </div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
     <ul class="footer-links">
       <li><a href="ajouter-minuteur-google-slides.html">Guides</a></li><!-- seo:guides -->
+      <li><a href="https://customer-portal.paddle.com/cpl_01m50ryzx8qggj8p5vzk1qxy49" rel="noopener"><strong>Résilier votre contrat</strong></a></li><!-- seo:cancel -->
       <li><a href="pricing.html">Tarifs</a></li>
       <li><a href="terms.html">Conditions générales de vente</a></li>
       <li><a href="privacy.html">Confidentialité</a></li>
       <li><a href="refund.html">Remboursement</a></li>
       <li><a href="legal.html">Mentions légales</a></li>
-      <li>Contact : <a href="mailto:contact@slidepace.com">contact@slidepace.com</a></li>
+      <li><a href="terms.html#mediation">Médiateur de la consommation : CM2C</a></li><!-- seo:mediator -->
+      <li>Contact : <a href="mailto:contact@slidepace.com">contact@slidepace.com</a></li>
     </ul>
-    <p>SlidePace est édité par PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). Ce site n’utilise aucun cookie. Mesure d’audience sans cookie (Cloudflare Web Analytics) : <a href="/fr/privacy.html#audience">ne plus mesurer mes visites</a>.</p>
+    <p>SlidePace est édité par PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). Ce site ne dépose lui-même aucun cookie ; il mesure sa fréquentation sans cookie (Cloudflare Web Analytics) : <a href="/fr/privacy.html#audience">ne plus mesurer mes visites</a>. La page de prix charge le script de paiement de Paddle depuis cdn.paddle.com uniquement lorsque vous choisissez une offre ; le paiement s’effectue dans une fenêtre Paddle, qui utilise ses propres cookies, strictement nécessaires au paiement et à la lutte contre la fraude (<a href="https://www.paddle.com/legal/privacy" rel="noopener">politique de confidentialité de Paddle</a>).</p>
     <p>© 2026 SlidePace. Google Slides™ est une marque de Google LLC. SlidePace n’est pas affilié à Google.</p>
   </div>
 </footer>
+<script src="../pricing.js"></script>
 <script src="/audience.js" defer></script><!-- seo:analytics -->
 </body>
 </html>

@@ -8,6 +8,8 @@
   --border: #dde2ec;
   --accent: #1f6feb;
   --accent-dark: #1757bd;
+  --accent-on-soft: #1d68dd; /* liens sur --bg-soft : 4,76:1 (au moins 4,5:1, WCAG AA) */
+  --on-accent: #fff; /* texte des boutons et pastilles bleus */
   --ok: #1a7f37;
   --todo-bg: #fff4c2;
   --todo-text: #6b4e00;
@@ -24,6 +26,8 @@
     --border: #2c3346;
     --accent: #5b9dff;
     --accent-dark: #8ab8ff;
+    --accent-on-soft: #5b9dff; /* inchangé en thème sombre */
+    --on-accent: #12151c; /* texte foncé sur le bleu clair : 6,7:1 (le blanc n'atteignait que 2,72:1) */
     --ok: #4cc26a;
     --todo-bg: #4a3b00;
     --todo-text: #ffe28a;
@@ -45,6 +49,11 @@ body {
 
 a { color: var(--accent); }
 a:hover { color: var(--accent-dark); }
+
+/* Zones sur fond gris clair (pied de page, cartes, encadrés, tableaux des guides) : bleu un peu plus foncé pour que les
+   liens atteignent le contraste AA (audit d'accessibilité du 2026-10-21). Les boutons et pastilles de ces zones
+   prennent le même bleu. */
+.site-footer, .features li, .card, .legal-box, .note, .cta, .compare-table th { --accent: var(--accent-on-soft); }
 
 .wrap {
   max-width: var(--max);
@@ -113,14 +122,14 @@ li { margin-bottom: 4px; }
 .btn {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   text-decoration: none;
   font-weight: 600;
   padding: 12px 22px;
   border-radius: var(--radius);
   margin: 8px 12px 8px 0;
 }
-.btn:hover { background: var(--accent-dark); color: #fff; }
+.btn:hover { background: var(--accent-dark); color: var(--on-accent); }
 .btn-secondary {
   background: transparent;
   color: var(--accent);
@@ -165,7 +174,7 @@ li { margin-bottom: 4px; }
 .badge {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-size: 0.8rem;
   font-weight: 600;
   border-radius: 999px;
@@ -184,9 +193,41 @@ li { margin-bottom: 4px; }
   border-radius: 4px;
 }
 
+/* Page de licence et boutons d'achat */
+.hidden { display: none !important; }
+button.btn { font: inherit; font-weight: 600; border: 0; cursor: pointer; }
+button.btn:disabled { opacity: 0.55; cursor: default; }
+.form-card { display: grid; gap: 12px; max-width: 40em; margin: 20px 0; }
+.form-card label { font-weight: 600; }
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  font: 14px/1.4 ui-monospace, Consolas, monospace;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+.form-card .btn { margin: 0; justify-self: start; }
+.status-ok { color: var(--ok); font-weight: 600; margin: 0; }
+.status-err { color: #be141e; font-weight: 600; margin: 0; }
+@media (prefers-color-scheme: dark) { .status-err { color: #ff8a8a; } }
+.muted { color: var(--muted); font-size: 0.95rem; margin: 0; }
+.keep-key {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.95rem;
+}
+
 dl.legal { margin: 0 0 16px; }
 dl.legal dt { font-weight: 600; margin-top: 10px; }
 dl.legal dd { margin: 0 0 4px; }
+/* Mention du médiateur : la longue adresse du site CM2C passe à la ligne sur téléphone. */
+.mediation a { overflow-wrap: anywhere; }
 
 /* Pied de page */
 .site-footer {
@@ -212,3 +253,16 @@ dl.legal dd { margin: 0 0 4px; }
   h1, .hero h1 { font-size: 1.7rem; }
   .btn { display: block; text-align: center; margin-right: 0; }
 }
+
+/* Encadré « Garanties légales » (décret 2022-946), CGV et politique de remboursement. */
+.legal-box {
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 18px 0;
+  background: var(--bg-soft);
+  font-size: 0.95rem;
+}
+.legal-box p { margin: 8px 0; }
+.legal-box-title { font-size: 1.05rem; }
+.legal-box-garant { border-top: 1px solid var(--border); padding-top: 8px; }
