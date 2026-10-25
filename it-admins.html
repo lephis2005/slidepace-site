@@ -44,7 +44,7 @@
   <li><code>storage</code>: keeps the user’s settings in the browser only (local storage of the extension).</li>
   <li><code>scripting</code>, limited to the address below: puts the timer back in Google Slides tabs that were already open when the extension is installed or updated.</li>
   <li>Site access: <code>https://docs.google.com/presentation/*</code> only, to display the timer during the slideshow. SlidePace does not read the content of the slides.</li>
-  <li><strong>Optional</strong> site access <code>https://api.slidepace.com/*</code>: requested only when a user activates a SlidePace Pro license, and can be declined; used to check the license.</li>
+  <li><strong>Optional</strong> site access <code>https://api.slidepace.com/*</code>: requested only when a SlidePace Pro license is activated; the user can decline it. It is used to check the license.</li>
   <li>Messages accepted from <code>https://slidepace.com/*</code> only (<code>externally_connectable</code>): the license page can send a license key to the extension, after the user clicks “Activate in SlidePace”.</li>
 </ul>
 <p>Chrome shows one warning at installation: “Read and change your data on docs.google.com”.</p>
