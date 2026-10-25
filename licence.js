@@ -128,7 +128,7 @@
   let otherLicense = false;
 
   // La licence reçue est affichée ; elle n'est envoyée à l'extension que sur un clic de l'utilisateur sur « Activer dans
-  // SlidePace » (audit du 24/10, I2 : jamais d'activation sans geste, même au retour du paiement avec ?txn=).
+  // SlidePace » (audit du 24/10, I2 : jamais d'activation sans geste, même au retour du paiement avec #txn=, ou ?txn= des anciens liens).
   let shownToken = '';
   // Décision 3 du propriétaire du 25/10 (relecture sécurité de la session 28) : « Activer » ne devient cliquable
   // qu'environ 500 ms après l'affichage de la licence, pour qu'un double-clic commencé sur une autre page ne l'active pas.
