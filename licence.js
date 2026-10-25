@@ -16,6 +16,17 @@
   })();
   if (framed) return;
 
+  // Adresse courte (/licence, /fr/licence) : GitHub Pages y sert la même page, mais l'extension n'accepte les messages
+  // que de …/licence.html (externally_connectable, 1.2.1). Redirection vers l'adresse complète, requête et fragment
+  // (#txn=) conservés, avant toute demande (décision 7 du 25/10). Adresse rebâtie sur l'origine de la page : « //licence »
+  // (servie aussi par GitHub Pages) ne devient jamais une adresse d'un autre domaine. ⚠ Repli sur Cloudflare Pages, qui
+  // renvoie licence.html vers /licence : retirer d'abord cette redirection (docs/repli-cloudflare-pages.md).
+  if (/\/licence$/.test(location.pathname)) {
+    const target = new URL(location.pathname.replace(/^\/+/, '/') + '.html' + location.search + location.hash, location.origin);
+    if (target.origin === location.origin) location.replace(target.href);
+    return;
+  }
+
   // Adresse de la fonction de licence (Cloudflare Workers), identique à licenseApi de src/pro-config.js (branche main).
   // api.slidepace.com depuis le 2026-10-18 : branchée sur la fonction sandbox jusqu'au jour J, puis sur la fonction réelle.
   const LICENSE_API = 'https://api.slidepace.com';
