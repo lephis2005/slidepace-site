@@ -5,6 +5,17 @@
 (function () {
   'use strict';
 
+  // Page chargée dans un cadre (iframe) d'un autre site : elle ne fait rien (audit du 24/10, I2). Une page piégée ne
+  // peut ainsi ni demander une licence ni l'envoyer à l'extension ; GitHub Pages ne permet pas l'en-tête anti-cadre.
+  const framed = (() => {
+    try {
+      return window.top !== window.self;
+    } catch (_) {
+      return true; // accès refusé à window.top : cadre d'une autre origine
+    }
+  })();
+  if (framed) return;
+
   // Adresse de la fonction de licence (Cloudflare Workers), identique à licenseApi de src/pro-config.js (branche main).
   // api.slidepace.com depuis le 2026-10-18 : branchée sur la fonction sandbox jusqu'au jour J, puis sur la fonction réelle.
   const LICENSE_API = 'https://api.slidepace.com';
@@ -29,6 +40,7 @@
       retrying: 'Checking your purchase… new attempt in a few seconds.',
       slow: 'Paddle’s confirmation is taking longer than expected. Try again in a few minutes with the button above: your purchase is not lost.',
       copied: 'Copied ✓',
+      notActivated: 'SlidePace did not answer from this page (extension missing, or another Chrome profile). Activate the key by hand, as shown below.',
       errors: {
         bad_request: 'This does not look like a Paddle transaction number. Check it on your Paddle receipt (it starts with txn_) and copy-paste it rather than typing it.',
         unknown: 'Number not found at Paddle. Check it on your Paddle receipt (it starts with txn_) and copy-paste it rather than typing it.',
@@ -44,6 +56,7 @@
       retrying: 'Vérification de l’achat… nouvel essai dans quelques secondes.',
       slow: 'La confirmation de Paddle prend plus de temps que prévu. Réessayez dans quelques minutes avec le bouton ci-dessus : votre achat n’est pas perdu.',
       copied: 'Copiée ✓',
+      notActivated: 'SlidePace n’a pas répondu depuis cette page (extension absente, ou autre profil Chrome). Activez la clé à la main, comme indiqué ci-dessous.',
       errors: {
         bad_request: 'Ce numéro ne ressemble pas à un numéro de transaction Paddle. Vérifiez-le sur votre reçu Paddle (il commence par txn_) et copiez-collez-le plutôt que de le taper.',
         unknown: 'Numéro introuvable chez Paddle. Vérifiez-le sur votre reçu Paddle (il commence par txn_) et copiez-collez-le plutôt que de le taper.',
@@ -109,14 +122,32 @@
     return false;
   }
 
-  async function showLicense(token) {
+  // La licence reçue est affichée ; elle n'est envoyée à l'extension que sur un clic de l'utilisateur sur « Activer dans
+  // SlidePace » (audit du 24/10, I2 : jamais d'activation sans geste, même au retour du paiement avec ?txn=).
+  let shownToken = '';
+  function showLicense(token) {
+    shownToken = token;
     $('result').classList.remove('hidden');
     $('token').value = token;
-    const reply = await sendToExtension(token);
+    $('activate').classList.remove('hidden');
+    $('activated').classList.add('hidden');
+    $('next-step').classList.add('hidden');
+    $('activate-err').classList.add('hidden');
+    $('manual').classList.remove('hidden');
+  }
+
+  $('activate').addEventListener('click', async () => {
+    if (!shownToken) return;
+    $('activate').disabled = true;
+    const reply = await sendToExtension(shownToken);
+    $('activate').disabled = false;
+    $('activate').classList.toggle('hidden', !!reply);
     $('activated').classList.toggle('hidden', !reply);
     $('next-step').classList.toggle('hidden', !(reply && reply.needsPermission));
     $('manual').classList.toggle('hidden', !!reply);
-  }
+    $('activate-err').textContent = reply ? '' : T.notActivated;
+    $('activate-err').classList.toggle('hidden', !!reply);
+  });
 
   // Juste après le paiement, Paddle met quelques secondes à finaliser l'achat : tant que la fonction
   // répond « pending » (ou n'est pas joignable), on réessaie toutes les 5 s pendant 60 s

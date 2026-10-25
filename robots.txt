@@ -1,3 +1,4 @@
+# Same rule for every crawler (search engines and AI crawlers included).
 User-agent: *
 Allow: /
 
