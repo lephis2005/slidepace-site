@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://cdn.paddle.com; connect-src 'self' https://cloudflareinsights.com https://api.slidepace.com https://*.paddle.com; frame-src https://*.paddle.com; img-src 'self' data: https://*.paddle.com; style-src 'self' 'unsafe-inline' https://*.paddle.com; font-src 'self' https://*.paddle.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT 管理者向け SlidePace — 権限・通信・導入</title>
+<meta name="description" content="学校・企業の IT 担当者向け：SlidePace 拡張機能の ID、マニフェストに基づく権限、ネットワークで送信される内容（無料版：なし。Pro：ライセンス ID のみ）、導入と購入について。">
+<link rel="canonical" href="https://slidepace.com/ja/it-admins.html">
+<link rel="alternate" hreflang="en" href="https://slidepace.com/it-admins.html">
+<link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/administrateurs-informatiques.html">
+<link rel="alternate" hreflang="ja" href="https://slidepace.com/ja/it-admins.html">
+<link rel="alternate" hreflang="x-default" href="https://slidepace.com/it-admins.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='12' fill='white' stroke='%231c2230' stroke-width='3'/%3E%3Crect x='13' y='2' width='6' height='3' rx='1' fill='%231c2230'/%3E%3Cpath d='M16 18 L16 10' stroke='%231f6feb' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="3"/><rect x="13" y="2" width="6" height="3" rx="1" fill="currentColor"/><path d="M16 18 L16 10" stroke="#1f6feb" stroke-width="3" stroke-linecap="round"/></svg>SlidePace</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">ホーム</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="../pricing.html">料金（英語）</a>
+      <a href="mailto:contact@slidepace.com">お問い合わせ</a>
+      <a class="lang-switch" href="../it-admins.html" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+<main id="content">
+  <div class="wrap">
+<h1>IT 管理者向け SlidePace</h1>
+<p class="lead">SlidePace は、Google スライド™ のスライドショーの上にタイマーを表示する Chrome 拡張機能です。このページでは、学校や企業の IT 担当者が導入を許可するために必要な事実（アクセスできる範囲、送信する内容、導入方法）をまとめています。以下の権限は、公開中のバージョン（1.2.0）のマニフェストに基づいています。</p>
+
+<h2 id="id">拡張機能</h2>
+<ul>
+  <li><strong>Chrome ウェブストアの ID：</strong><code>dchbmbjjgcdjkhkkmebpnbhgegchobca</code>（<a href="https://chromewebstore.google.com/detail/dchbmbjjgcdjkhkkmebpnbhgegchobca?utm_source=site&amp;utm_medium=it-admins&amp;utm_campaign=ja" rel="noopener">掲載ページ</a>）</li>
+  <li><strong>提供元：</strong>PPCC Studio（EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING、フランス）。Manifest V3。外部のコードを読み込んだり実行したりすることはありません。</li>
+  <li><strong>アカウント：</strong>無料版・SlidePace Pro とも不要です。</li>
+</ul>
+
+<h2 id="permissions">権限</h2>
+<ul>
+  <li><code>storage</code>：ユーザーの設定をブラウザ内（拡張機能のローカルストレージ）にのみ保存します。</li>
+  <li><code>scripting</code>（下記のアドレスに限定）：拡張機能のインストール時・更新時に、すでに開いている Google スライドのタブにタイマーを表示し直すために使います。</li>
+  <li>サイトへのアクセス：<code>https://docs.google.com/presentation/*</code> のみ。スライドショー中にタイマーを表示するためです。SlidePace はスライドの内容を読み取りません。</li>
+  <li><code>https://api.slidepace.com/*</code> への<strong>任意の</strong>アクセス：ユーザーが SlidePace Pro のライセンスを有効化するときにだけ求められ、拒否することもできます。ライセンスの確認に使います。</li>
+  <li><code>https://slidepace.com/*</code> からのメッセージのみ受け付けます（<code>externally_connectable</code>）。ライセンスページは、ユーザーが「Activate in SlidePace」ボタンをクリックした後に限り、ライセンスキーを拡張機能に送ることができます。</li>
+</ul>
+<p>インストール時に Chrome が表示する警告は、docs.google.com 上のデータの読み取りと変更に関するもの 1 つだけです。</p>
+
+<h2 id="network">ネットワークで送信される内容</h2>
+<ul>
+  <li><strong>無料版：</strong>何も送信しません。統計もトラッキングもなく、どのサーバーにもリクエストを送りません。</li>
+  <li><strong>Pro の 30 日間無料体験：</strong>何も送信しません。</li>
+  <li><strong>SlidePace Pro：</strong>およそ月に一度、ライセンス ID のみを付けて <code>https://api.slidepace.com</code> に 1 回リクエストを送ります。名前、メールアドレス、プレゼンテーションの内容は送りません。詳細は<a href="../privacy.html">プライバシーポリシー（英語）</a>をご覧ください（フランス語版が正文です：<a href="../fr/privacy.html">フランス語版</a>）。</li>
+</ul>
+
+<h2 id="deploy">管理対象のパソコンへの導入</h2>
+<ul>
+  <li>Chrome の管理ツール（たとえば Google 管理コンソール、または Chrome のポリシー <code>ExtensionInstallForcelist</code> と <code>ExtensionSettings</code>）で、ID を指定して拡張機能を許可または強制インストールしてください。</li>
+  <li>ポリシーでサイトへのアクセスを制限している場合は、この拡張機能に <code>https://docs.google.com/presentation/*</code> へのアクセスを許可してください。許可がないとタイマーを表示できません。</li>
+  <li>SlidePace Pro を使う場合は <code>https://api.slidepace.com</code> も許可してください。ライセンスを確認できない場合でも、Pro は少なくとも 30 日間は動作し、その後は確認が成功するまで一時停止することがあります（無料版のタイマーには影響しません）。</li>
+  <li>Microsoft Edge は Chrome ウェブストアから拡張機能をインストールできます。そのほかの Chromium ベースのブラウザは当方では未確認です。</li>
+</ul>
+
+<h2 id="buy">教員・職員の方の SlidePace Pro</h2>
+<p>SlidePace Pro のライセンスは個人用です。各自が自分で使うために、<a href="../pricing.html">slidepace.com</a> でご購入ください（年額 12 ユーロ、または買い切り 39 ユーロ。EU 域内は付加価値税込み。1 回の購入につき 1 ライセンスで、その方が使うすべてのパソコンで利用できます）。発注書、複数ユーザー向けライセンス、サイトライセンスには対応していません。ご質問は <a href="mailto:contact@slidepace.com">contact@slidepace.com</a> までお送りください。</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <ul class="footer-links">
+      <li><a href="google-slides-timer.html">ガイド</a></li>
+      <li><a href="https://customer-portal.paddle.com/cpl_01m50ryzx8qggj8p5vzk1qxy49" rel="noopener"><strong>契約を解約する</strong></a></li>
+      <li><a href="../pricing.html">料金</a></li>
+      <li><a href="../terms.html">販売条件</a></li>
+      <li><a href="../privacy.html">プライバシー</a></li>
+      <li><a href="../refund.html">返金</a></li>
+      <li><a href="../legal.html">法的表示</a></li>
+      <li class="muted">これらのページは英語です（フランス語版が正文です）。</li>
+      <li>お問い合わせ： <a href="mailto:contact@slidepace.com">contact@slidepace.com</a></li>
+    </ul>
+    <p>SlidePace は PPCC Studio（EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING、フランス）が提供しています。このサイト自体は Cookie を設定しません。Cookie を使わずにアクセスを計測しています（Cloudflare Web Analytics）：<a href="/privacy.html#audience">計測を停止する</a>。料金ページは、プランを選んだときにだけ cdn.paddle.com から Paddle の決済スクリプトを読み込みます。決済は Paddle のウィンドウで行われ、このウィンドウは決済と不正防止に厳密に必要な独自の Cookie を使用します（<a href="https://www.paddle.com/legal/privacy" rel="noopener">Paddle のプライバシーポリシー</a>）。</p>
+    <p>© 2026 SlidePace. Google スライド™ は Google LLC の商標です。SlidePace は Google と提携していません。</p>
+  </div>
+</footer>
+<script src="/audience.js" defer></script><!-- seo:analytics -->
+</body>
+</html>

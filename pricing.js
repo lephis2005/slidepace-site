@@ -50,7 +50,8 @@
               // Paiement terminé : on va chercher la licence avec le numéro de transaction
               // (la page de licence le retire aussitôt de l'adresse).
               if (event.name === 'checkout.completed' && event.data && event.data.transaction_id) {
-                licenceUrl.search = '?txn=' + encodeURIComponent(event.data.transaction_id);
+                // Fragment (#txn=) : jamais envoyé au serveur qui sert la page de licence (audit du 22/10, B4).
+                licenceUrl.hash = 'txn=' + encodeURIComponent(event.data.transaction_id);
                 location.href = licenceUrl.href;
               }
             },

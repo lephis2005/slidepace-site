@@ -150,6 +150,27 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/licence-help.html"/>
   </url>
   <url>
+    <loc>https://slidepace.com/it-admins.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://slidepace.com/it-admins.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/administrateurs-informatiques.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://slidepace.com/ja/it-admins.html"/>
+  </url>
+  <url>
+    <loc>https://slidepace.com/fr/administrateurs-informatiques.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://slidepace.com/it-admins.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/administrateurs-informatiques.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://slidepace.com/ja/it-admins.html"/>
+  </url>
+  <url>
+    <loc>https://slidepace.com/ja/it-admins.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://slidepace.com/it-admins.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/administrateurs-informatiques.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://slidepace.com/ja/it-admins.html"/>
+  </url>
+  <url>
     <loc>https://slidepace.com/add-timer-google-slides.html</loc>
     <lastmod>2026-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://slidepace.com/add-timer-google-slides.html"/>

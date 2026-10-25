@@ -130,10 +130,19 @@
   // La licence reçue est affichée ; elle n'est envoyée à l'extension que sur un clic de l'utilisateur sur « Activer dans
   // SlidePace » (audit du 24/10, I2 : jamais d'activation sans geste, même au retour du paiement avec ?txn=).
   let shownToken = '';
+  // Décision 3 du propriétaire du 25/10 (relecture sécurité de la session 28) : « Activer » ne devient cliquable
+  // qu'environ 500 ms après l'affichage de la licence, pour qu'un double-clic commencé sur une autre page ne l'active pas.
+  const ARM_MS = 500;
+  let armedAt = 0;
   function showLicense(token) {
     shownToken = token;
     $('result').classList.remove('hidden');
     $('token').value = token;
+    $('activate').disabled = true;
+    armedAt = Date.now() + ARM_MS;
+    setTimeout(() => {
+      $('activate').disabled = false;
+    }, ARM_MS);
     $('activate').classList.remove('hidden');
     $('activated').classList.add('hidden');
     $('next-step').classList.add('hidden');
@@ -142,7 +151,7 @@
   }
 
   $('activate').addEventListener('click', async () => {
-    if (!shownToken) return;
+    if (!shownToken || Date.now() < armedAt) return;
     $('activate').disabled = true;
     otherLicense = false;
     const reply = await sendToExtension(shownToken);
@@ -225,13 +234,15 @@
     $('copy').textContent = T.copied;
   });
 
-  // Retour de la page de prix : ?txn=… (Paddle). Le numéro de transaction suffit à obtenir la licence :
-  // on le retire aussitôt de l'adresse (historique, favoris, captures, liens partagés), sans recharger (audit C2).
-  const fromUrl = params.get('txn');
+  // Retour de la page de prix : #txn=… (Paddle). Le numéro de transaction suffit à obtenir la licence : il voyage dans
+  // le fragment, jamais envoyé au serveur qui sert la page (audit du 22/10, B4) ; ?txn=… reste accepté (anciens liens).
+  // On le retire aussitôt de l'adresse (historique, favoris, captures, liens partagés), sans recharger (audit C2).
+  const fromHash = new URLSearchParams((location.hash || '').replace(/^#/, '')).get('txn');
+  const fromUrl = fromHash || params.get('txn');
   if (fromUrl) {
     params.delete('txn');
     const rest = params.toString();
-    history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+    history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + (fromHash ? '' : location.hash));
     $('txn').value = fromUrl;
     fetchLicense(fromUrl, { fromCheckout: true });
   }

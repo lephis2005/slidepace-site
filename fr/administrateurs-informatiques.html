@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com https://cdn.paddle.com; connect-src 'self' https://cloudflareinsights.com https://api.slidepace.com https://*.paddle.com; frame-src https://*.paddle.com; img-src 'self' data: https://*.paddle.com; style-src 'self' 'unsafe-inline' https://*.paddle.com; font-src 'self' https://*.paddle.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SlidePace pour les administrateurs informatiques — autorisations, réseau, déploiement</title>
+<meta name="description" content="Pour les équipes informatiques des établissements et des entreprises : identifiant de l’extension SlidePace, autorisations d’après son manifeste, ce qui passe par le réseau (gratuit : rien ; Pro : l’identifiant de licence seulement), déploiement et achat.">
+<link rel="canonical" href="https://slidepace.com/fr/administrateurs-informatiques.html">
+<link rel="alternate" hreflang="en" href="https://slidepace.com/it-admins.html">
+<link rel="alternate" hreflang="fr" href="https://slidepace.com/fr/administrateurs-informatiques.html">
+<link rel="alternate" hreflang="ja" href="https://slidepace.com/ja/it-admins.html">
+<link rel="alternate" hreflang="x-default" href="https://slidepace.com/it-admins.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='18' r='12' fill='white' stroke='%231c2230' stroke-width='3'/%3E%3Crect x='13' y='2' width='6' height='3' rx='1' fill='%231c2230'/%3E%3Cpath d='M16 18 L16 10' stroke='%231f6feb' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="3"/><rect x="13" y="2" width="6" height="3" rx="1" fill="currentColor"/><path d="M16 18 L16 10" stroke="#1f6feb" stroke-width="3" stroke-linecap="round"/></svg>SlidePace</a>
+    <nav class="site-nav" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="faq.html">FAQ</a>
+      <a href="pricing.html">Tarifs</a>
+      <a href="mailto:contact@slidepace.com">Contact</a>
+      <a class="lang-switch" href="../it-admins.html" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+<main id="content">
+  <div class="wrap">
+<h1>SlidePace pour les administrateurs informatiques</h1>
+<p class="lead">SlidePace est une extension Chrome qui affiche un minuteur par-dessus les diaporamas Google Slides™. Cette page donne aux équipes informatiques des établissements et des entreprises les informations utiles pour l’autoriser : ce à quoi elle peut accéder, ce qu’elle envoie et comment la déployer. Les autorisations ci-dessous viennent du manifeste de la version publiée (1.2.0).</p>
+
+<h2 id="id">L’extension</h2>
+<ul>
+  <li><strong>Identifiant du Chrome Web Store :</strong> <code>dchbmbjjgcdjkhkkmebpnbhgegchobca</code> (<a href="https://chromewebstore.google.com/detail/dchbmbjjgcdjkhkkmebpnbhgegchobca?utm_source=site&amp;utm_medium=it-admins&amp;utm_campaign=fr" rel="noopener">fiche</a>).</li>
+  <li><strong>Éditeur :</strong> PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). Manifest V3 ; aucun code distant n’est chargé ni exécuté.</li>
+  <li><strong>Compte :</strong> aucun, pour la version gratuite comme pour SlidePace Pro.</li>
+</ul>
+
+<h2 id="permissions">Autorisations</h2>
+<ul>
+  <li><code>storage</code> : garde les réglages de l’utilisateur dans le navigateur seulement (stockage local de l’extension).</li>
+  <li><code>scripting</code>, limité à l’adresse ci-dessous : remet le minuteur dans les onglets Google Slides déjà ouverts à l’installation ou à la mise à jour de l’extension.</li>
+  <li>Accès aux sites : <code>https://docs.google.com/presentation/*</code> seulement, pour afficher le minuteur pendant le diaporama. SlidePace ne lit pas le contenu des diapositives.</li>
+  <li>Accès <strong>facultatif</strong> à <code>https://api.slidepace.com/*</code> : demandé seulement quand un utilisateur active une licence SlidePace Pro, et qui peut être refusé ; il sert à vérifier la licence.</li>
+  <li>Messages acceptés depuis <code>https://slidepace.com/*</code> seulement (<code>externally_connectable</code>) : la page de licence peut envoyer une clé de licence à l’extension, après un clic de l’utilisateur sur « Activer dans SlidePace ».</li>
+</ul>
+<p>Chrome affiche un seul avertissement à l’installation : « Lire et modifier vos données sur docs.google.com ».</p>
+
+<h2 id="reseau">Ce qui passe par le réseau</h2>
+<ul>
+  <li><strong>Version gratuite :</strong> rien. Ni statistiques, ni pistage, aucune requête vers un serveur.</li>
+  <li><strong>Essai Pro de 30 jours :</strong> rien n’est envoyé.</li>
+  <li><strong>SlidePace Pro :</strong> environ une fois par mois, une requête vers <code>https://api.slidepace.com</code> avec l’identifiant de licence seulement — jamais le nom, l’email ni le contenu des présentations. Détail : <a href="privacy.html">politique de confidentialité</a>.</li>
+</ul>
+
+<h2 id="deploiement">Déploiement sur des ordinateurs gérés</h2>
+<ul>
+  <li>Autorisez ou installez d’office l’extension avec son identifiant dans vos outils de gestion de Chrome (par exemple la console d’administration Google, ou les règles Chrome <code>ExtensionInstallForcelist</code> et <code>ExtensionSettings</code>).</li>
+  <li>Si vos règles bloquent l’accès aux sites, gardez <code>https://docs.google.com/presentation/*</code> autorisé pour l’extension : sans lui, le minuteur ne peut pas s’afficher.</li>
+  <li>Pour SlidePace Pro, autorisez aussi <code>https://api.slidepace.com</code> : si la licence ne peut pas être vérifiée, Pro continue de fonctionner au moins 30 jours, puis peut se mettre en pause jusqu’à une vérification réussie (le minuteur gratuit n’est jamais concerné).</li>
+  <li>Microsoft Edge peut installer l’extension depuis le Chrome Web Store ; les autres navigateurs basés sur Chromium ne sont pas testés par nous.</li>
+</ul>
+
+<h2 id="achat">SlidePace Pro pour les enseignants et le personnel</h2>
+<p>Une licence SlidePace Pro est personnelle : chacun achète la sienne, pour son propre usage, sur <a href="pricing.html">slidepace.com</a> (12 € par an ou 39 € en paiement unique, TVA incluse dans l’UE ; une licence par achat, valable sur tous les ordinateurs que cette personne utilise). Nous ne proposons ni bon de commande, ni licence multi-utilisateurs, ni licence de site. Pour toute question, écrivez à <a href="mailto:contact@slidepace.com">contact@slidepace.com</a>.</p>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <ul class="footer-links">
+      <li><a href="ajouter-minuteur-google-slides.html">Guides</a></li>
+      <li><a href="https://customer-portal.paddle.com/cpl_01m50ryzx8qggj8p5vzk1qxy49" rel="noopener"><strong>Résilier votre contrat</strong></a></li>
+      <li><a href="pricing.html">Tarifs</a></li>
+      <li><a href="terms.html">Conditions générales de vente</a></li>
+      <li><a href="privacy.html">Confidentialité</a></li>
+      <li><a href="refund.html">Remboursement</a></li>
+      <li><a href="legal.html">Mentions légales</a></li>
+      <li><a href="terms.html#mediation">Médiateur de la consommation : CM2C</a></li>
+      <li>Contact : <a href="mailto:contact@slidepace.com">contact@slidepace.com</a></li>
+    </ul>
+    <p>SlidePace est édité par PPCC Studio (EURL PIERRE-PHILIPPE CONSEIL &amp; COACHING, France). Ce site ne dépose lui-même aucun cookie ; il mesure sa fréquentation sans cookie (Cloudflare Web Analytics) : <a href="/fr/privacy.html#audience">ne plus mesurer mes visites</a>. La page de prix charge le script de paiement de Paddle depuis cdn.paddle.com uniquement lorsque vous choisissez une offre ; le paiement s’effectue dans une fenêtre Paddle, qui utilise ses propres cookies, strictement nécessaires au paiement et à la lutte contre la fraude (<a href="https://www.paddle.com/legal/privacy" rel="noopener">politique de confidentialité de Paddle</a>).</p>
+    <p>© 2026 SlidePace. Google Slides™ est une marque de Google LLC. SlidePace n’est pas affilié à Google.</p>
+  </div>
+</footer>
+<script src="/audience.js" defer></script><!-- seo:analytics -->
+</body>
+</html>
