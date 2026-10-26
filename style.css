@@ -216,6 +216,8 @@ button.btn:disabled { opacity: 0.55; cursor: default; }
 .status-err { color: #be141e; font-weight: 600; margin: 0; }
 @media (prefers-color-scheme: dark) { .status-err { color: #ff8a8a; } }
 .muted { color: var(--muted); font-size: 0.95rem; margin: 0; }
+/* Invitation à laisser un avis, après une activation réussie (discrète : texte courant, simple lien). */
+.review { margin: 0; font-size: 0.95rem; }
 .keep-key {
   margin: 0;
   padding: 12px 14px;

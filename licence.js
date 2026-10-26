@@ -107,12 +107,48 @@
     return 'en';
   }
 
+  // Invitation à laisser un avis, après une activation réussie seulement (décision 5 du propriétaire du 25/10/2026 au
+  // soir, option C ; proposition A de docs/brouillons/textes-avis.md, branche claude/1-3-avis). Même langue que « Conservez
+  // cette clé ». Simple lien vers la page des avis de la fiche Chrome, sans paramètre de suivi : aucune contrepartie,
+  // aucune note demandée, rien écrit sur l'appareil, aucun appel réseau, aucun lien avec le paiement.
+  const REVIEW = {
+    en: { text: 'Welcome to SlidePace Pro! If you have a moment, a review on the Chrome Web Store, whatever your opinion, would help other presenters discover SlidePace.', link: 'Leave a review' },
+    fr: { text: 'Bienvenue dans SlidePace Pro ! Si vous avez un instant, vous pouvez laisser un avis sur le Chrome Web Store : quel qu’il soit, il aide d’autres intervenants à découvrir SlidePace.', link: 'Donner votre avis' },
+    es: { text: '¡Te damos la bienvenida a SlidePace Pro! Si tienes un momento, tu opinión en Chrome Web Store, sea cual sea, ayuda a otros ponentes a descubrir SlidePace.', link: 'Dar tu opinión' },
+    pt_BR: { text: 'Boas-vindas ao SlidePace Pro! Se tiver um momento, sua opinião na Chrome Web Store, qualquer que seja, ajuda outros apresentadores a descobrir o SlidePace.', link: 'Dar sua opinião' },
+    de: { text: 'Willkommen bei SlidePace Pro! Wenn Sie einen Moment Zeit haben: Eine Rezension im Chrome Web Store – wie auch immer sie ausfällt – hilft anderen Vortragenden, SlidePace zu entdecken.', link: 'Rezension schreiben' },
+    it: { text: 'Ti diamo il benvenuto in SlidePace Pro! Se hai un momento, una recensione sul Chrome Web Store, qualunque sia la tua opinione, aiuta altri relatori a scoprire SlidePace.', link: 'Lascia una recensione' },
+    ja: { text: 'SlidePace Pro へようこそ。お時間があれば、Chrome ウェブストアでレビューをいただけるとうれしいです。どんな内容でも、ほかの発表者の方が SlidePace を知るきっかけになります。', link: 'レビューを書く' },
+  };
+  // Edge : lien masqué, comme dans l'extension (src/review-link.js de la 1.3.0) : la fiche Edge n'existe pas encore.
+  const ON_EDGE = (() => {
+    try {
+      const brands = navigator.userAgentData && navigator.userAgentData.brands;
+      return Array.isArray(brands) && brands.some((b) => /edge/i.test(String(b && b.brand)));
+    } catch (_) {
+      return false;
+    }
+  })();
+
   const $ = (id) => document.getElementById(id);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   const kl = keepKeyLang();
   $('keep-key').textContent = KEEP_KEY[kl];
   $('keep-key').lang = kl.replace('_', '-');
+
+  // Le texte n'est posé qu'au moment d'afficher l'invitation (activation réussie) ; masquée dans tous les autres cas.
+  function showReview(show) {
+    const box = $('review');
+    if (!show || ON_EDGE) {
+      box.classList.add('hidden');
+      return;
+    }
+    $('review-text').textContent = REVIEW[kl].text;
+    $('review-link').textContent = REVIEW[kl].link;
+    box.lang = kl.replace('_', '-');
+    box.classList.remove('hidden');
+  }
 
   // Activation en un clic : l'extension n'écoute que https://slidepace.com (externally_connectable)
   // et revérifie l'origine. Renvoie la réponse de l'extension si elle a accepté la licence, sinon false.
@@ -157,6 +193,7 @@
     $('activate').classList.remove('hidden');
     $('activated').classList.add('hidden');
     $('next-step').classList.add('hidden');
+    showReview(false);
     $('activate-err').classList.add('hidden');
     $('manual').classList.remove('hidden');
   }
@@ -170,6 +207,9 @@
     $('activate').classList.toggle('hidden', !!reply);
     $('activated').classList.toggle('hidden', !reply);
     $('next-step').classList.toggle('hidden', !(reply && reply.needsPermission));
+    // Pas d'invitation tant que l'étape « autoriser la vérification » reste à faire : elle passe en premier (contradicteur
+    // de la session 31).
+    showReview(!!reply && !reply.needsPermission);
     $('manual').classList.toggle('hidden', !!reply);
     $('activate-err').textContent = reply ? '' : otherLicense ? T.otherLicense : T.notActivated;
     $('activate-err').classList.toggle('hidden', !!reply);
