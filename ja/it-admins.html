@@ -30,7 +30,7 @@
 <main id="content">
   <div class="wrap">
 <h1>IT 管理者向け SlidePace</h1>
-<p class="lead">SlidePace は、Google スライド™ のスライドショーの上にタイマーを表示する Chrome 拡張機能です。このページでは、学校や企業の IT 担当者が導入を許可するために必要な事実（アクセスできる範囲、送信する内容、導入方法）をまとめています。以下の権限は、公開中のバージョン（1.2.0）のマニフェストに基づいています。</p>
+<p class="lead">SlidePace は、Google スライド™ のスライドショーの上にタイマーを表示する Chrome 拡張機能です。このページでは、学校や企業の IT 担当者が導入を許可するために必要な事実（アクセスできる範囲、送信する内容、導入方法）をまとめています。以下の権限は、公開中のバージョン（1.2.1）のマニフェストに基づいています。</p>
 
 <h2 id="id">拡張機能</h2>
 <ul>
@@ -45,7 +45,7 @@
   <li><code>scripting</code>（下記のアドレスに限定）：拡張機能のインストール時・更新時に、すでに開いている Google スライドのタブにタイマーを表示し直すために使います。</li>
   <li>サイトへのアクセス：<code>https://docs.google.com/presentation/*</code> のみ。スライドショー中にタイマーを表示するためです。SlidePace はスライドの内容を読み取りません。</li>
   <li><code>https://api.slidepace.com/*</code> への<strong>任意の</strong>アクセス：SlidePace Pro のユーザーにだけ、ユーザー自身が操作したとき（ライセンスの有効化時、または後で「許可」や「今すぐ確認」を押したとき）に求められます。拒否することもできます。ライセンスの確認に使います。</li>
-  <li><code>https://slidepace.com/*</code> からのメッセージのみ受け付けます（<code>externally_connectable</code>）。ライセンスページは、ユーザーが「Activate in SlidePace」ボタンをクリックした後に限り、ライセンスキーを拡張機能に送ることができます。</li>
+  <li>2 つのライセンスページ（<code>https://slidepace.com/licence.html</code> と <code>https://slidepace.com/fr/licence.html</code>）からのメッセージのみ受け付けます（<code>externally_connectable</code>）。ライセンスページは、ユーザーが「Activate in SlidePace」ボタンをクリックした後に限り、ライセンスキーを拡張機能に送ることができます。</li>
 </ul>
 <p>インストール時に Chrome が表示する警告は、docs.google.com 上のデータの読み取りと変更に関するもの 1 つだけです。</p>
 

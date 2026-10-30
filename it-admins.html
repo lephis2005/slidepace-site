@@ -30,7 +30,7 @@
 <main id="content">
   <div class="wrap">
 <h1>SlidePace for IT administrators</h1>
-<p class="lead">SlidePace is a Chrome extension that shows a timer on top of Google Slides™ slideshows. This page gives school and company IT teams the facts needed to allow it: what it may access, what it sends, and how to deploy it. The permissions below come from the manifest of the published version (1.2.0).</p>
+<p class="lead">SlidePace is a Chrome extension that shows a timer on top of Google Slides™ slideshows. This page gives school and company IT teams the facts needed to allow it: what it may access, what it sends, and how to deploy it. The permissions below come from the manifest of the published version (1.2.1).</p>
 
 <h2 id="id">Extension</h2>
 <ul>
@@ -45,7 +45,7 @@
   <li><code>scripting</code>, limited to the address below: puts the timer back in Google Slides tabs that were already open when the extension is installed or updated.</li>
   <li>Site access: <code>https://docs.google.com/presentation/*</code> only, to display the timer during the slideshow. SlidePace does not read the content of the slides.</li>
   <li><strong>Optional</strong> site access <code>https://api.slidepace.com/*</code>: requested only from SlidePace Pro users, and only after they click (when activating the license, or later by clicking “Allow” or “Verify now”); the user can decline it. It is used to check the license.</li>
-  <li>Messages accepted from <code>https://slidepace.com/*</code> only (<code>externally_connectable</code>): the license page can send a license key to the extension, after the user clicks “Activate in SlidePace”.</li>
+  <li>Messages accepted only from the two license pages, <code>https://slidepace.com/licence.html</code> and <code>https://slidepace.com/fr/licence.html</code> (<code>externally_connectable</code>): the license page can send a license key to the extension, after the user clicks “Activate in SlidePace”.</li>
 </ul>
 <p>Chrome shows one warning at installation: “Read and change your data on docs.google.com”.</p>
 
