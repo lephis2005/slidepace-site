@@ -36,11 +36,14 @@
   // propriétaire) : jamais sur slidepace.com (audit technique E1).
   const STORE_EXTENSION_ID = 'dchbmbjjgcdjkhkkmebpnbhgegchobca';
   const DEV_EXTENSION_ID = 'ophmejbfngjolbfjmbholmeponmdipoi';
+  // J6 : identifiant de l'extension sur Microsoft Edge Add-ons (différent de celui du Chrome Web Store), pour
+  // l'activation en un clic dans Edge. Tant qu'il n'est pas rempli, tests/unit/site-licence.test.js échoue.
+  const EDGE_EXTENSION_ID = 'gcojobnofoademkbkjhmmkkegcnnjjeo';
 
   const params = new URLSearchParams(location.search);
   const LOCAL_PAGE = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  const EXTENSION_IDS =
-    params.get('dev') === '1' && LOCAL_PAGE ? [STORE_EXTENSION_ID, DEV_EXTENSION_ID] : [STORE_EXTENSION_ID];
+  const PUBLISHED_IDS = [STORE_EXTENSION_ID, EDGE_EXTENSION_ID];
+  const EXTENSION_IDS = params.get('dev') === '1' && LOCAL_PAGE ? [...PUBLISHED_IDS, DEV_EXTENSION_ID] : PUBLISHED_IDS;
 
   const LANG = document.documentElement.lang === 'fr' ? 'fr' : 'en';
 
