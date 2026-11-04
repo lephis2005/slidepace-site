@@ -216,6 +216,8 @@ button.btn:disabled { opacity: 0.55; cursor: default; }
 .status-err { color: #be141e; font-weight: 600; margin: 0; }
 @media (prefers-color-scheme: dark) { .status-err { color: #ff8a8a; } }
 .muted { color: var(--muted); font-size: 0.95rem; margin: 0; }
+/* Lien vers Microsoft Edge Add-ons sous les boutons d'installation (accueils, Tarifs, guides, FAQ) ; dans .cta, la marge de .cta .muted. */
+.edge-store { margin-top: 10px; }
 /* Invitation à laisser un avis, après une activation réussie (discrète : texte courant, simple lien). */
 .review { margin: 0; font-size: 0.95rem; }
 .keep-key {

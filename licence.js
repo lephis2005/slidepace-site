@@ -37,7 +37,7 @@
   const STORE_EXTENSION_ID = 'dchbmbjjgcdjkhkkmebpnbhgegchobca';
   const DEV_EXTENSION_ID = 'ophmejbfngjolbfjmbholmeponmdipoi';
   // J6 : identifiant de l'extension sur Microsoft Edge Add-ons (différent de celui du Chrome Web Store), pour
-  // l'activation en un clic dans Edge. Tant qu'il n'est pas rempli, tests/unit/site-licence.test.js échoue.
+  // l'activation en un clic dans Edge. Rempli le 02/11/2026 ; le test vérifie sa forme.
   const EDGE_EXTENSION_ID = 'gcojobnofoademkbkjhmmkkegcnnjjeo';
 
   const params = new URLSearchParams(location.search);
@@ -54,7 +54,7 @@
       retrying: 'Checking your purchase… new attempt in a few seconds.',
       slow: 'Paddle’s confirmation is taking longer than expected. Try again in a few minutes with the button above: your purchase is not lost.',
       copied: 'Copied ✓',
-      notActivated: 'SlidePace did not answer from this page (extension missing, or another Chrome profile). Activate the key by hand, as shown below.',
+      notActivated: 'SlidePace did not answer from this page (extension missing, or another browser profile). Activate the key by hand, as shown below.',
       otherLicense: 'SlidePace already holds a license from another purchase, so this page does not replace it. To use this key: open SlidePace, click “Remove license”, then “I have a license key” and paste this key.',
       errors: {
         bad_request: 'This does not look like a Paddle transaction number. Check it on your Paddle receipt (it starts with txn_) and copy-paste it rather than typing it.',
@@ -71,7 +71,7 @@
       retrying: 'Vérification de l’achat… nouvel essai dans quelques secondes.',
       slow: 'La confirmation de Paddle prend plus de temps que prévu. Réessayez dans quelques minutes avec le bouton ci-dessus : votre achat n’est pas perdu.',
       copied: 'Copiée ✓',
-      notActivated: 'SlidePace n’a pas répondu depuis cette page (extension absente, ou autre profil Chrome). Activez la clé à la main, comme indiqué ci-dessous.',
+      notActivated: 'SlidePace n’a pas répondu depuis cette page (extension absente, ou autre profil de navigateur). Activez la clé à la main, comme indiqué ci-dessous.',
       otherLicense: 'SlidePace contient déjà une licence d’un autre achat : cette page ne la remplace pas. Pour utiliser cette clé : ouvrez SlidePace, cliquez sur « Retirer la licence », puis sur « J’ai une clé de licence » et collez cette clé.',
       errors: {
         bad_request: 'Ce numéro ne ressemble pas à un numéro de transaction Paddle. Vérifiez-le sur votre reçu Paddle (il commence par txn_) et copiez-collez-le plutôt que de le taper.',
@@ -112,26 +112,24 @@
 
   // Invitation à laisser un avis, après une activation réussie seulement (décision 5 du propriétaire du 25/10/2026 au
   // soir, option C ; proposition A de docs/brouillons/textes-avis.md, branche claude/1-3-avis). Même langue que « Conservez
-  // cette clé ». Simple lien vers la page des avis de la fiche Chrome, sans paramètre de suivi : aucune contrepartie,
-  // aucune note demandée, rien écrit sur l'appareil, aucun appel réseau, aucun lien avec le paiement.
+  // cette clé ». Simple lien vers la fiche de la boutique de l'extension qui a répondu, sans paramètre de suivi : aucune
+  // contrepartie, aucune note demandée, rien écrit sur l'appareil, aucun appel réseau, aucun lien avec le paiement.
+  // Textes neutres quant à la boutique (mêmes termes que optReviewText de la 1.3.0).
   const REVIEW = {
-    en: { text: 'Welcome to SlidePace Pro! If you have a moment, a review on the Chrome Web Store, whatever your opinion, would help other presenters discover SlidePace.', link: 'Leave a review' },
-    fr: { text: 'Bienvenue dans SlidePace Pro ! Si vous avez un instant, vous pouvez laisser un avis sur le Chrome Web Store : quel qu’il soit, il aide d’autres intervenants à découvrir SlidePace.', link: 'Donner votre avis' },
-    es: { text: '¡Te damos la bienvenida a SlidePace Pro! Si tienes un momento, tu opinión en Chrome Web Store, sea cual sea, ayuda a otros ponentes a descubrir SlidePace.', link: 'Dar tu opinión' },
-    pt_BR: { text: 'Boas-vindas ao SlidePace Pro! Se tiver um momento, sua opinião na Chrome Web Store, qualquer que seja, ajuda outros apresentadores a descobrir o SlidePace.', link: 'Dar sua opinião' },
-    de: { text: 'Willkommen bei SlidePace Pro! Wenn Sie einen Moment Zeit haben: Eine Rezension im Chrome Web Store – wie auch immer sie ausfällt – hilft anderen Vortragenden, SlidePace zu entdecken.', link: 'Rezension schreiben' },
-    it: { text: 'Ti diamo il benvenuto in SlidePace Pro! Se hai un momento, una recensione sul Chrome Web Store, qualunque sia la tua opinione, aiuta altri relatori a scoprire SlidePace.', link: 'Lascia una recensione' },
-    ja: { text: 'SlidePace Pro へようこそ。お時間があれば、Chrome ウェブストアでレビューをいただけるとうれしいです。どんな内容でも、ほかの発表者の方が SlidePace を知るきっかけになります。', link: 'レビューを書く' },
+    en: { text: 'Welcome to SlidePace Pro! If you have a moment, a review on the store, whatever your opinion, would help other presenters discover SlidePace.', link: 'Leave a review' },
+    fr: { text: 'Bienvenue dans SlidePace Pro ! Si vous avez un instant, vous pouvez laisser un avis dans la boutique d’extensions : quel qu’il soit, il aide d’autres intervenants à découvrir SlidePace.', link: 'Donner votre avis' },
+    es: { text: '¡Te damos la bienvenida a SlidePace Pro! Si tienes un momento, tu opinión en la tienda, sea cual sea, ayudaría a otros ponentes a descubrir SlidePace.', link: 'Dar tu opinión' },
+    pt_BR: { text: 'Boas-vindas ao SlidePace Pro! Se tiver um momento, sua opinião na loja, qualquer que seja, ajudaria outros apresentadores a descobrir o SlidePace.', link: 'Dar sua opinião' },
+    de: { text: 'Willkommen bei SlidePace Pro! Wenn Sie einen Moment Zeit haben: Eine Rezension im Store – wie auch immer sie ausfällt – würde anderen Vortragenden helfen, SlidePace zu entdecken.', link: 'Rezension schreiben' },
+    it: { text: 'Ti diamo il benvenuto in SlidePace Pro! Se hai un momento, una recensione sullo store, qualunque sia la tua opinione, aiuterebbe altri relatori a scoprire SlidePace.', link: 'Lascia una recensione' },
+    ja: { text: 'SlidePace Pro へようこそ。お時間があれば、ストアでレビューをいただけるとうれしいです。どんな内容でも、ほかの発表者の方が SlidePace を知るきっかけになります。', link: 'レビューを書く' },
   };
-  // Edge : lien masqué, comme dans l'extension (src/review-link.js de la 1.3.0) : la fiche Edge n'existe pas encore.
-  const ON_EDGE = (() => {
-    try {
-      const brands = navigator.userAgentData && navigator.userAgentData.brands;
-      return Array.isArray(brands) && brands.some((b) => /edge/i.test(String(b && b.brand)));
-    } catch (_) {
-      return false;
-    }
-  })();
+  // Adresse du lien selon l'identifiant de l'extension qui a accepté la licence, et non selon le navigateur (même logique
+  // que src/review-link.js de la 1.3.0, décision I22 du 02/11/2026) : extension installée depuis Microsoft Edge Add-ons →
+  // sa fiche Edge ; toute autre (Chrome Web Store, y compris installée dans Edge) → page des avis de la fiche Chrome.
+  const CHROME_REVIEWS_URL = 'https://chromewebstore.google.com/detail/dchbmbjjgcdjkhkkmebpnbhgegchobca/reviews';
+  const EDGE_LISTING_URL = 'https://microsoftedge.microsoft.com/addons/detail/gcojobnofoademkbkjhmmkkegcnnjjeo';
+  const reviewUrl = (extensionId) => (extensionId === EDGE_EXTENSION_ID ? EDGE_LISTING_URL : CHROME_REVIEWS_URL);
 
   const $ = (id) => document.getElementById(id);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -141,21 +139,24 @@
   $('keep-key').lang = kl.replace('_', '-');
 
   // Le texte n'est posé qu'au moment d'afficher l'invitation (activation réussie) ; masquée dans tous les autres cas.
-  function showReview(show) {
+  function showReview(show, extensionId) {
     const box = $('review');
-    if (!show || ON_EDGE) {
+    if (!show) {
       box.classList.add('hidden');
       return;
     }
     $('review-text').textContent = REVIEW[kl].text;
     $('review-link').textContent = REVIEW[kl].link;
+    $('review-link').href = reviewUrl(extensionId);
     box.lang = kl.replace('_', '-');
     box.classList.remove('hidden');
   }
 
   // Activation en un clic : l'extension n'écoute que https://slidepace.com (externally_connectable)
-  // et revérifie l'origine. Renvoie la réponse de l'extension si elle a accepté la licence, sinon false.
+  // et revérifie l'origine. Renvoie la réponse de l'extension si elle a accepté la licence, sinon false ; l'identifiant
+  // de l'extension qui l'a acceptée est gardé dans acceptedBy (adresse du lien vers les avis).
   async function sendToExtension(token) {
+    acceptedBy = '';
     const runtime = window.chrome && window.chrome.runtime;
     if (!runtime || !runtime.sendMessage) return false;
     for (const id of EXTENSION_IDS) {
@@ -169,13 +170,17 @@
           resolve(null);
         }
       });
-      if (reply && reply.ok) return reply;
+      if (reply && reply.ok) {
+        acceptedBy = id;
+        return reply;
+      }
       // Licence d'un autre achat déjà enregistrée (refus volontaire de l'extension, 1.2.1 et suivantes) : on le dit.
       if (reply && reply.reason === 'other_license') otherLicense = true;
     }
     return false;
   }
   let otherLicense = false;
+  let acceptedBy = '';
 
   // La licence reçue est affichée ; elle n'est envoyée à l'extension que sur un clic de l'utilisateur sur « Activer dans
   // SlidePace » (audit du 24/10, I2 : jamais d'activation sans geste, même au retour du paiement avec #txn=, ou ?txn= des anciens liens).
@@ -212,7 +217,7 @@
     $('next-step').classList.toggle('hidden', !(reply && reply.needsPermission));
     // Pas d'invitation tant que l'étape « autoriser la vérification » reste à faire : elle passe en premier (contradicteur
     // de la session 31).
-    showReview(!!reply && !reply.needsPermission);
+    showReview(!!reply && !reply.needsPermission, acceptedBy);
     $('manual').classList.toggle('hidden', !!reply);
     $('activate-err').textContent = reply ? '' : otherLicense ? T.otherLicense : T.notActivated;
     $('activate-err').classList.toggle('hidden', !!reply);
